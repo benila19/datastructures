@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+int" k_way_merge(int k, int arrays[], int sizes[])
+{
+int total_size = 0;
+for (int i=0;i<k;i++)
+{
+total_size+=sizes[i];
+}
+int*result=(int)malloc(total_size* sizeof(int));
+if (result==NULL)
+{
+fprintf(stderr, "Memory allocation failed.\n"); 
+exit(1);
+}
+int pointers[k]; 
+for(int i=0;i<k;i++)
+{
+pointers[1]-0
+}
+int idx=0;
+while(idx<total_size)
+{
+int min val = INT_MAX;
+int min_idx=-1;
+for (int i = 0; i <k; i++)
+{
+if (pointers[i] < sizes[i] && arrays [i][pointers[i]] < min_val)
+{
+min val = arrays[i][pointers[i]];
+min_idx= i;
+}
+}
+result[idx++] = min_val, ;
+pointers [min_idx]++;
+}
+return result
+}
+int main(){
+int k =3;
+int arri[]=(1,3,5);
+int arr2[]=(2,4,6); 
+int arr3[]=(0,7,8);
+int arrays[]=[arr, arr2, arr3};
+int sizes[]=(3,3,3);
+int sorted array =k_way_merge(k, arrays, sizes);
+printf("Sorted Array: ");
+for (int i=0;i<9;i++) { 
+printf("%d", sorted_array[i]);
+}
+printf("\n");
+free(sorted_array);
+return 0;
+}
