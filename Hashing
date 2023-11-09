@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <time.h>
+#define MAX_SIZE 10000
+struct HashData{
+int data[MAX_SIZE];
+int index [MAX_SIZE];
+int size; 
+};
+void init(struct HashData *hashData) {
+hashData->size = 0;
+}
+void swap(struct HashData *hashData, int index1, int index2) {
+int temp = hashData->data[index1];
+hashData->data[index1] = hashData->data[index2]; 17 hashData->index [hashData->data[index1]] = index1;
+hashData->data[index2] = temp;
+hashData->index[temp] = index2;
+}
+void insert(struct HashData *hashData, int x) {
+if (hashData->size = MAX_SIZE) { printf("Error: Data structure is full.\n");
+return;
+}
+if (hashData->index[x] == -1) {
+hashData->data[hashData->size] = x; 
+hashData->index[x] = hashData->size;
+hashData->size++;
+}
+}
+void removeElement(struct HashData *hashData, int x) {
+if (hashData->index[x] == -1) {
+printf("Error: Element not found.\n");
+return;
+}
+int index hashData->index[x];
+hashData->index[x] = -1;
+if (index < hashData->size - 1) { 
+swap (hashData, index, hashData->size = 1);
+}
+hashData->size--;
+}
+bool search(struct HashData hashData, int x) 
+return (hashData->index [x] != -1);
+}
+int getRandom(struct HashData *hashData) {
+if (hashData->size == 0) {
+printf("Error: Data structure is empty. \n");
+return -1;
+}
+int randomIndex = rand() % hashData->size;
+return hashData->data[randomIndex];
+}
+int main(){
+srand(time(NULL));
+struct HashData hashData;
+init(&hashData);
+int choice, element;
+while (1) {
+printf("\nMenu:\n");
+printf("1. Insert element\n");
+printf("2. Remove element\n");
+printf("3. Search element\n");
+printf("4. Get random element\n");
+printf("5. Exit\n");
+printf("Enter your choice: ");
+scanf("%d", &choice);
+switch (choice) {
+case 1:
+printf("Enter the element to insert: ");
+scanf("%d", &element);
+insert(&hashData, element);
+break;
+case 2:
+printf("Enter the element to remove: "); 
+removeElement(&hashData, element);
+scanf("%d", &element);
+break;
+case 3:
+printf("Enter the element to search: ");
+scanf("%d", &element);
+if (search(&hashData, element)) 
+printf("Element %d is present.\n", element);  
+else
+printf("Element %d is not present.\n", element); 
+break;
+case 4:
+printf("Random element: %d\n", getRandom(&hashData));
+break;
+case 5:
+exit(0);
+default:
+printf("Invalid choice. Try again.\n");
+}
+}
+return 0;
+}
